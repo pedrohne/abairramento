@@ -66,3 +66,16 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
+// --- 4. SUPORTE A TOQUE NO MENU DROPDOWN MOBILE ---
+const dropdownParent = document.querySelector('nav li.dropdown > a');
+if (dropdownParent) {
+    dropdownParent.addEventListener('click', (e) => {
+        // Se for mobile, permite abrir o dropdown ao tocar em vez de seguir link vazio
+        const dropdownContent = dropdownParent.nextElementSibling;
+        if (dropdownContent) {
+            e.preventDefault();
+            dropdownContent.style.display = dropdownContent.style.display === 'block' ? 'none' : 'block';
+        }
+    });
+}
