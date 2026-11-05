@@ -241,23 +241,263 @@ footer .copyright {
 }
 
 /* --- MENU SUSPENSO (DROPDOWN DE ANEXOS) --- */
-nav ul {
-    position: relative;
+/* --- VARIÁVEIS E RESET --- */
+:root {
+    --primary-color: #07692d;
+    --primary-hover: #087e25;
+    --bg-color: #fcfcfc;
+    --card-bg: #f1f7ed;
+    --text-main: #202124;
+    --text-secondary: #5f6368;
+    --border-radius: 8px;
+    --shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    --border-color: #dadce0;
 }
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* --- HEADER --- */
+header {
+    background-color: var(--card-bg);
+    padding: 1rem 2rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.header-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo-area h1 {
+    font-size: 1.25rem;
+    color: var(--primary-color);
+    font-weight: 600;
+}
+
+.logo-area span {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    display: block;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 1.5rem;
+    align-items: center;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 0.95rem;
+    transition: color 0.3s ease;
+}
+
+nav a:hover {
+    color: var(--primary-color);
+}
+
+/* --- CONTEÚDO PRINCIPAL (LAYOUT CARDS) --- */
+main {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+    flex-grow: 1;
+    width: 100%;
+}
+
+.card {
+    background-color: var(--card-bg);
+    padding: 2rem;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+    margin-bottom: 2rem;
+    border-top: 8px solid var(--primary-color);
+}
+
+.card-header h2 {
+    font-size: 1.8rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+}
+
+.card-header h3 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+}
+
+.card-header p {
+    color: var(--text-secondary);
+}
+
+.card-content p {
+    margin-bottom: 1rem;
+}
+
+.card-content p:last-child {
+    margin-bottom: 0;
+}
+
+.separator {
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 1.5rem 0;
+}
+
+/* --- SEÇÃO DO MAPA --- */
+.map-section h3 {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--primary-color);
+}
+
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    min-height: 650px; 
+    
+    /* Ajuste do aspect-ratio para uma proporção mais vertical em telas grandes */
+    aspect-ratio: 4 / 3; 
+    
+    border-radius: 4px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+    margin-bottom: 1rem;
+}
+
+.map-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+.map-tip {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    background-color: #e8f0fe;
+    padding: 0.75rem 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.tip-icon {
+    font-style: normal;
+    font-size: 1.1rem;
+}
+
+/* --- BOTÃO DO FORMULÁRIO --- */
+.btn-form {
+    display: inline-block;
+    background-color: var(--primary-color);
+    color: #ffffff;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    border-radius: 4px;
+    font-weight: 500;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.2s ease;
+}
+
+.btn-form:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+/* --- RODAPÉ --- */
+footer {
+    background-color: #3c4043;
+    color: #ffffff;
+    padding: 2rem 1rem;
+    margin-top: auto;
+    text-align: center;
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin-bottom: 0.4rem;
+    opacity: 0.9;
+}
+
+footer .copyright {
+    font-size: 0.8rem;
+    opacity: 0.6;
+    margin-top: 0.5rem;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+    .header-container {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+    }
+
+    nav ul {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    main {
+        margin: 1rem auto;
+    }
+
+    .card {
+        padding: 1.25rem;
+    }
+
+    .card-header h2 {
+        font-size: 1.5rem;
+    }
+
+    .map-wrapper {
+        min-height: 480px;
+        aspect-ratio: 1 / 1;
+    }
+}
+
+/* --- MENU SUSPENSO (DROPDOWN DE ANEXOS VERTICAL) --- */
 nav li.dropdown {
     position: relative;
 }
 
-/* Oculta a lista de PDFs por padrão */
+/* Caixa do submenu em formato de coluna vertical */
 nav .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
     background-color: #ffffff;
-    min-width: 180px;
-    max-height: 320px; /* Altura máxima com barra de rolagem */
+    min-width: 160px;
+    max-height: 280px; /* Altura máxima com barra de rolagem */
     overflow-y: auto;   /* Ativa a rolagem vertical */
     box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
     border-radius: 4px;
@@ -267,14 +507,15 @@ nav .dropdown-content {
     border: 1px solid var(--border-color);
 }
 
-/* Exibe a lista ao passar o mouse sobre o item Anexos */
+/* Exibe o submenu ao passar o mouse */
 nav li.dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Estilo dos itens dentro da lista suspensa */
+/* Força os itens do submenu a ficarem um abaixo do outro */
 nav .dropdown-content li {
     width: 100%;
+    display: block;
 }
 
 nav .dropdown-content li a {
@@ -282,11 +523,12 @@ nav .dropdown-content li a {
     padding: 0.5rem 1rem;
     color: var(--text-main);
     font-size: 0.9rem;
+    text-decoration: none;
     white-space: nowrap;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Efeito ao passar o mouse em cima de um PDF específico da lista */
+/* Efeito ao passar o mouse em cima de um arquivo específico */
 nav .dropdown-content li a:hover {
     background-color: var(--card-bg);
     color: var(--primary-color);
