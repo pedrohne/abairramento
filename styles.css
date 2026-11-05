@@ -484,23 +484,23 @@ footer .copyright {
     }
 }
 
-/* --- MENU SUSPENSO (DROPDOWN DE ANEXOS VERTICAL) --- */
+/* --- MENU SUSPENSO (DROPDOWN DE ANEXOS - PADRÃO INSTITUCIONAL) --- */
 nav li.dropdown {
     position: relative;
 }
 
-/* Caixa do submenu em formato de coluna vertical */
+/* Caixa do submenu em formato de coluna vertical alinhada ao padrão do site */
 nav .dropdown-content {
     display: none;
     position: absolute;
     top: 100%;
     left: 0;
-    background-color: #ffffff;
-    min-width: 160px;
+    background-color: var(--card-bg); /* Usa o mesmo fundo suave dos cards (#f1f7ed) */
+    min-width: 150px;
     max-height: 280px; /* Altura máxima com barra de rolagem */
     overflow-y: auto;   /* Ativa a rolagem vertical */
-    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
-    border-radius: 4px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    border-radius: var(--border-radius);
     list-style: none;
     padding: 0.5rem 0;
     z-index: 1100;
@@ -521,15 +521,16 @@ nav .dropdown-content li {
 nav .dropdown-content li a {
     display: block;
     padding: 0.5rem 1rem;
-    color: var(--text-main);
+    color: var(--text-secondary); /* Usa a cor secundária padrão dos links */
     font-size: 0.9rem;
     text-decoration: none;
+    font-weight: 500;
     white-space: nowrap;
     transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* Efeito ao passar o mouse em cima de um arquivo específico */
+/* Efeito ao passar o mouse em cima de uma página específica (destaca com a cor primária) */
 nav .dropdown-content li a:hover {
-    background-color: var(--card-bg);
-    color: var(--primary-color);
+    background-color: #e2ede0; /* Um tom ligeiramente mais escuro que o card-bg para contraste */
+    color: var(--primary-color); /* Fica verde institucional */
 }
