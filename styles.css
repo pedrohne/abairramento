@@ -239,3 +239,55 @@ footer .copyright {
         aspect-ratio: 1 / 1;
     }
 }
+
+/* --- MENU SUSPENSO (DROPDOWN DE ANEXOS) --- */
+nav ul {
+    position: relative;
+}
+
+nav li.dropdown {
+    position: relative;
+}
+
+/* Oculta a lista de PDFs por padrão */
+nav .dropdown-content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: #ffffff;
+    min-width: 180px;
+    max-height: 320px; /* Altura máxima com barra de rolagem */
+    overflow-y: auto;   /* Ativa a rolagem vertical */
+    box-shadow: 0px 8px 16px rgba(0,0,0,0.15);
+    border-radius: 4px;
+    list-style: none;
+    padding: 0.5rem 0;
+    z-index: 1100;
+    border: 1px solid var(--border-color);
+}
+
+/* Exibe a lista ao passar o mouse sobre o item Anexos */
+nav li.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Estilo dos itens dentro da lista suspensa */
+nav .dropdown-content li {
+    width: 100%;
+}
+
+nav .dropdown-content li a {
+    display: block;
+    padding: 0.5rem 1rem;
+    color: var(--text-main);
+    font-size: 0.9rem;
+    white-space: nowrap;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Efeito ao passar o mouse em cima de um PDF específico da lista */
+nav .dropdown-content li a:hover {
+    background-color: var(--card-bg);
+    color: var(--primary-color);
+}
